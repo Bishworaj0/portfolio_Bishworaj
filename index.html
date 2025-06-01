@@ -3,57 +3,284 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bishworaj | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Your Name | Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pI1mkeQKXTvNSjY02SM+i6Ac0084tTO+pTf7DBS6IC8J1VHz6r1rtJAHGGk2v0fKk5eHmJQdbpR2XRhGvP4aVg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1>Bishworaj</h1>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- ======== NAVBAR ======== -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="logo">YourLogo</a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <button id="theme-toggle" aria-label="Toggle Dark/Light Mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
   </header>
 
-  <section class="hero">
-    <h2>Hello, I'm Bishworaj 👋</h2>
-    <p>Frontend Developer | JavaScript Enthusiast | AI Explorer</p>
-  </section>
-
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I’m a passionate developer building web applications using HTML, CSS, and JavaScript. I love learning new tech and solving real-world problems.</p>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project-list">
-      <div class="project-card">
-        <h3>QR Attendance System</h3>
-        <p>A smart QR-based check-in system for employees with real-time tracking.</p>
+  <!-- ======== HERO ======== -->
+  <section class="hero" id="home">
+    <div class="container hero-container">
+      <div class="hero-text">
+        <h1>Hi, I’m <span class="highlight">Your Name</span></h1>
+        <p>Frontend Developer | JavaScript Enthusiast | Problem Solver</p>
+        <a href="#projects" class="btn">View My Work</a>
       </div>
-      <div class="project-card">
-        <h3>Portfolio Website</h3>
-        <p>A clean and modern portfolio built with HTML, CSS, and JavaScript.</p>
+      <div class="hero-image">
+        <img src="https://via.placeholder.com/250" alt="Profile Picture" />
       </div>
     </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <form id="contact-form">
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit">Send</button>
-    </form>
+  <!-- ======== ABOUT ======== -->
+  <section id="about" class="about">
+    <div class="container section-container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            I’m a passionate web developer with a knack for crafting responsive,
+            user-friendly websites. After several projects using HTML, CSS, and
+            JavaScript, I’ve honed skills in building performant, accessible UIs.
+            When I’m not coding, you’ll find me exploring new frameworks,
+            experimenting with design, or diving into AI tools.
+          </p>
+          <p>
+            My goal is to continuously learn and deliver clean, scalable code that
+            solves real-world problems.
+          </p>
+        </div>
+        <div class="about-photo">
+          <img src="https://via.placeholder.com/300x300" alt="About Photo" />
+        </div>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <p>© 2025 Bishworaj. All rights reserved.</p>
+  <!-- ======== SKILLS ======== -->
+  <section id="skills" class="skills">
+    <div class="container section-container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <i class="fab fa-html5 fa-3x"></i>
+          <h3>HTML5</h3>
+          <p>Semantic markup, accessibility, SEO-friendly structure</p>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-css3-alt fa-3x"></i>
+          <h3>CSS3</h3>
+          <p>Flexbox, Grid, animations, responsive design</p>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-js-square fa-3x"></i>
+          <h3>JavaScript</h3>
+          <p>ES6+, DOM manipulation, fetch API, async/await</p>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-react fa-3x"></i>
+          <h3>React</h3>
+          <p>Component-driven architecture, hooks, state management</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-database fa-3x"></i>
+          <h3>Databases</h3>
+          <p>SQL basics, NoSQL fundamentals, CRUD operations</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-git-alt fa-3x"></i>
+          <h3>Version Control</h3>
+          <p>Git, branching strategies, GitHub workflows</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== PROJECTS ======== -->
+  <section id="projects" class="projects">
+    <div class="container section-container">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <!-- Project Tile 1 -->
+        <div class="project-card">
+          <img
+            src="https://via.placeholder.com/400x250"
+            alt="Project Screenshot"
+          />
+          <div class="overlay">
+            <h3>QR Attendance System</h3>
+            <p>
+              A React + Firebase app that uses QR codes for check-in/check-out,
+              real-time dashboard, and admin panel.
+            </p>
+            <div class="project-links">
+              <a href="#" target="_blank" title="Live Demo"
+                ><i class="fas fa-external-link-alt"></i
+              ></a>
+              <a href="#" target="_blank" title="Source Code"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Tile 2 -->
+        <div class="project-card">
+          <img
+            src="https://via.placeholder.com/400x250"
+            alt="Project Screenshot"
+          />
+          <div class="overlay">
+            <h3>Portfolio Website</h3>
+            <p>
+              This very template! Built with HTML, CSS, and JavaScript (no
+              frameworks) and deployed on GitHub Pages.
+            </p>
+            <div class="project-links">
+              <a href="#" target="_blank" title="Live Demo"
+                ><i class="fas fa-external-link-alt"></i
+              ></a>
+              <a href="#" target="_blank" title="Source Code"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Tile 3 -->
+        <div class="project-card">
+          <img
+            src="https://via.placeholder.com/400x250"
+            alt="Project Screenshot"
+          />
+          <div class="overlay">
+            <h3>Environmental Monitoring</h3>
+            <p>
+              PHP + MySQL system with real-time charts, email alerts, and admin
+              dashboard. Live data from third-party APIs.
+            </p>
+            <div class="project-links">
+              <a href="#" target="_blank" title="Live Demo"
+                ><i class="fas fa-external-link-alt"></i
+              ></a>
+              <a href="#" target="_blank" title="Source Code"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Tile 4 -->
+        <div class="project-card">
+          <img
+            src="https://via.placeholder.com/400x250"
+            alt="Project Screenshot"
+          />
+          <div class="overlay">
+            <h3>Data Analytics Dashboard</h3>
+            <p>
+              Tableau + JavaScript interactive dashboard analyzing sales data
+              with filters and drill-down charts.
+            </p>
+            <div class="project-links">
+              <a href="#" target="_blank" title="Live Demo"
+                ><i class="fas fa-external-link-alt"></i
+              ></a>
+              <a href="#" target="_blank" title="Source Code"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CONTACT ======== -->
+  <section id="contact" class="contact">
+    <div class="container section-container">
+      <h2 class="section-title">Get In Touch</h2>
+      <form
+        action="mailto:your.email@example.com"
+        method="POST"
+        enctype="text/plain"
+        class="contact-form"
+      >
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="Name"
+            placeholder="Your Name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="Email"
+            placeholder="your.email@example.com"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="Message"
+            rows="5"
+            placeholder="How can I help you?"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <p>© 2025 Your Name. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" target="_blank" title="GitHub"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a href="#" target="_blank" title="LinkedIn"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a href="#" target="_blank" title="Twitter"
+          ><i class="fab fa-twitter"></i
+        ></a>
+      </div>
+    </div>
   </footer>
 
   <script src="script.js"></script>
