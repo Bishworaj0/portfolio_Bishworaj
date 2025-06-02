@@ -122,7 +122,7 @@
         <!-- CSS-only “avatar” circle could go here (no image) -->
         <div class="mb-8 md:mb-0 flex-shrink-0">
           <div class="h-48 w-48 rounded-full bg-gradient-to-tr from-accent to-red-400 flex items-center justify-center text-white text-3xl font-bold">
-            YN
+            B
           </div>
         </div>
         <div class="text-gray-700 dark:text-gray-300 space-y-4">
@@ -196,8 +196,8 @@
           </div>
           <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition"></div>
           <div class="absolute bottom-0 p-4 text-white opacity-0 group-hover:opacity-100 transition">
-            <h3 class="font-semibold text-xl mb-1">QR Attendance System</h3>
-            <p class="text-sm">React + Firebase’s real-time check-in/out dashboard. (No images—pure CSS/gradient card.)</p>
+            <h3 class="font-semibold text-xl mb-1">Python Practice</h3>
+            <p class="text-sm">Python Projects</p>
             <div class="mt-2 space-x-3">
               <a href="#" target="_blank" class="inline-block bg-accent px-3 py-1 rounded-full text-sm hover:bg-red-600 transition">
                 Live Demo
@@ -230,7 +230,7 @@
           <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition"></div>
           <div class="absolute bottom-0 p-4 text-white opacity-0 group-hover:opacity-100 transition">
             <h3 class="font-semibold text-xl mb-1">Data Analytics Dashboard</h3>
-            <p class="text-sm">Tableau & JS interactive dashboards styled with Tailwind utilities.</p>
+            <p class="text-sm">Tableau & Python Projects</p>
             <div class="mt-2 space-x-3">
               <a href="#" target="_blank" class="inline-block bg-accent px-3 py-1 rounded-full text-sm hover:bg-red-600 transition">
                 Live Demo
@@ -249,44 +249,55 @@
   <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
     <div class="max-w-md mx-auto px-4">
       <h2 class="text-3xl font-semibold text-center mb-8 text-primary dark:text-gray-100">Contact Me</h2>
-      <form class="space-y-4">
-        <div>
-          <label for="name" class="block text-gray-700 dark:text-gray-300 mb-1">Name</label>
-          <input
-            type="text"
-            id="name"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-accent"
-            placeholder="Your Name"
-            required
-          />
-        </div>
-        <div>
-          <label for="email" class="block text-gray-700 dark:text-gray-300 mb-1">Email</label>
-          <input
-            type="email"
-            id="email"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-accent"
-            placeholder="your.email@example.com"
-            required
-          />
-        </div>
-        <div>
-          <label for="message" class="block text-gray-700 dark:text-gray-300 mb-1">Message</label>
-          <textarea
-            id="message"
-            rows="5"
-            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-accent"
-            placeholder="How can I help you?"
-            required
-          ></textarea>
-        </div>
-        <button
-          type="submit"
-          class="w-full bg-accent text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-600 transition"
-        >
-          Send Message
-        </button>
-      </form>
+     <form
+  action="https://formspree.io/f/xyzabcd"
+  method="POST"
+  class="space-y-4"
+>
+  <div>
+    <label for="name" class="block text-gray-700 dark:text-gray-300 mb-1">Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-accent"
+      placeholder="Your Name"
+      required
+    />
+  </div>
+  <div>
+    <label for="email" class="block text-gray-700 dark:text-gray-300 mb-1">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-accent"
+      placeholder="your.email@example.com"
+      required
+    />
+  </div>
+  <div>
+    <label for="message" class="block text-gray-700 dark:text-gray-300 mb-1">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-accent"
+      placeholder="How can I help you?"
+      required
+    ></textarea>
+  </div>
+  <button
+    type="submit"
+    class="w-full bg-accent text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-600 transition"
+  >
+    Send Message
+  </button>
+  <!-- Optional: show a success message via JavaScript after submission -->
+  <p id="thank-you" class="hidden text-green-600 mt-2">
+    Thanks! I’ll get back to you soon.
+  </p>
+</form>
     </div>
   </section>
 
@@ -358,6 +369,35 @@
       const current = document.documentElement.getAttribute('data-theme');
       setTheme(current === 'dark' ? 'light' : 'dark');
     });
+     const form = document.querySelector("form[action^='https://formspree.io']");
+  const thankYou = document.getElementById("thank-you");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    fetch(form.action, {
+      method: "POST",
+      body: data,
+      headers: { "Accept": "application/json" }
+    })
+      .then((response) => {
+        if (response.ok) {
+          form.reset();
+          thankYou.classList.remove("hidden");
+        } else {
+          response.json().then((data) => {
+            if (data.errors) {
+              alert(data.errors.map((err) => err.message).join(", "));
+            } else {
+              alert("Oops! There was a problem submitting your form.");
+            }
+          });
+        }
+      })
+      .catch(() => {
+        alert("Network error—please try again later.");
+      });
+  });
   </script>
 </body>
 </html>
