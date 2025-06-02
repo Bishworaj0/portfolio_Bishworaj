@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Your Name | Portfolio</title>
 
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <!-- Tailwind CSS CDN (using Play CDN for simplicity) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Optional: enable dark mode in Tailwind -->
+  <script>
+    tailwind.config = {
+      darkMode: ["class", '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2b2d42",
+            secondary: "#8d99ae",
+            accent: "#ef233c",
+          },
+        },
+      },
+    };
+  </script>
 
-  <!-- Font Awesome for icons -->
+  <!-- Font Awesome CDN for vector icons (optional) -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -20,195 +32,212 @@
     referrerpolicy="no-referrer"
   />
 
-  <link rel="stylesheet" href="index.css" />
+  <style>
+    /* Optional: Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* For mobile nav sliding animation */
+    .nav-open {
+      transform: translateX(0);
+    }
+    .nav-closed {
+      transform: translateX(100%);
+    }
+  </style>
 </head>
-<body>
-  <!-- ======== NAVBAR ======== -->
-  <header class="navbar">
-    <div class="container navbar-container">
-      <a href= "images/image copy.png" class="logo" mylogo </a>
-      <nav class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <button id="theme-toggle" aria-label="Toggle Dark/Light Mode">
-          <i class="fas fa-moon"></i>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+
+  <!-- ========== NAVBAR ========== -->
+  <header class="fixed w-full bg-white/80 backdrop-blur-sm dark:bg-gray-800/80 z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+      <!-- Logo (text-based) -->
+      <a href="#home" class="flex items-center space-x-2">
+        <!-- You can replace "YN" with your initials -->
+        <div class="bg-accent text-white font-bold text-xl rounded-full h-10 w-10 flex items-center justify-center">
+          YN
+        </div>
+        <span class="font-semibold text-lg text-primary dark:text-gray-100">YourName</span>
+      </a>
+
+      <!-- Desktop nav links -->
+      <nav class="hidden md:flex space-x-6">
+        <a href="#about" class="hover:text-accent transition">About</a>
+        <a href="#skills" class="hover:text-accent transition">Skills</a>
+        <a href="#projects" class="hover:text-accent transition">Projects</a>
+        <a href="#contact" class="hover:text-accent transition">Contact</a>
+        <!-- Dark/light toggle -->
+        <button id="theme-toggle" class="ml-4 text-xl focus:outline-none" aria-label="Toggle theme">
+          <i id="theme-icon" class="fas fa-moon"></i>
         </button>
       </nav>
-      <button class="nav-toggle" aria-label="Toggle navigation">
+
+      <!-- Mobile hamburger button -->
+      <button id="nav-toggle" class="md:hidden text-2xl focus:outline-none" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
       </button>
     </div>
+
+    <!-- Mobile nav panel -->
+    <nav id="mobile-nav" class="fixed top-0 right-0 h-screen w-64 bg-white dark:bg-gray-800 shadow-lg transform nav-closed transition-transform duration-300 md:hidden">
+      <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+        <span class="font-semibold text-lg text-primary dark:text-gray-100">Menu</span>
+        <button id="nav-close" class="text-2xl focus:outline-none" aria-label="Close navigation">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="mt-8 flex flex-col space-y-6 px-6">
+        <li><a href="#home" class="hover:text-accent block">Home</a></li>
+        <li><a href="#about" class="hover:text-accent block">About</a></li>
+        <li><a href="#skills" class="hover:text-accent block">Skills</a></li>
+        <li><a href="#projects" class="hover:text-accent block">Projects</a></li>
+        <li><a href="#contact" class="hover:text-accent block">Contact</a></li>
+        <li>
+          <button id="theme-toggle-mobile" class="text-xl focus:outline-none" aria-label="Toggle theme">
+            <i id="theme-icon-mobile" class="fas fa-moon"></i>
+            <span class="ml-2">Toggle Theme</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- ======== HERO ======== -->
-  <section class="hero" id="home">
-    <div class="container hero-container">
-      <div class="hero-text">
-        <h1>Hi, I’m <span class="highlight">Your Name</span></h1>
-        <p>Frontend Developer | Python Developer | Full Stack Developer</p>
-        <a href="#projects" class="btn">View My Work</a>
-      </div>
-      <div class="hero-image">
-        <img src="images/IMG_3773.jpeg" alt="Profile Picture" />
-      </div>
+  <!-- ========== HERO / HOME ========== -->
+  <section id="home" class="pt-20 pb-32 bg-gradient-to-br from-accent via-red-500 to-secondary text-white">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col items-center text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I’m <span class="underline decoration-white/50">Your Name</span></h1>
+      <p class="text-xl md:text-2xl mb-6">Full-Stack Developer | Python Developer | Learning ML & Data Analysis</p>
+      <a href="#projects" class="inline-block bg-white text-accent font-semibold px-6 py-3 rounded-full shadow hover:bg-gray-100 transition">
+        View My Work
+      </a>
     </div>
   </section>
 
-  <!-- ======== ABOUT ======== -->
-  <section id="about" class="about">
-    <div class="container section-container">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-content">
-        <div class="about-text">
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-semibold text-center mb-8 text-primary dark:text-gray-100">About Me</h2>
+      <div class="flex flex-col md:flex-row md:items-center md:space-x-8">
+        <!-- CSS-only “avatar” circle could go here (no image) -->
+        <div class="mb-8 md:mb-0 flex-shrink-0">
+          <div class="h-48 w-48 rounded-full bg-gradient-to-tr from-accent to-red-400 flex items-center justify-center text-white text-3xl font-bold">
+            YN
+          </div>
+        </div>
+        <div class="text-gray-700 dark:text-gray-300 space-y-4">
           <p>
-           I am a Full-Stack and Python developer, currently expanding my skills in machine learning, Tableau, and Excel for data analysis. I’m passionate about crafting responsive, user-friendly websites—having worked on numerous projects with HTML, CSS, and JavaScript, I’ve honed my ability to build performant, accessible UIs. When I’m not coding, you’ll find me exploring new frameworks, refining my design approach, or diving into AI tools.
+            I am a <span class="font-semibold">Full-Stack & Python Developer</span> currently diving into Machine Learning, Tableau, and Excel for data analysis.
+            I build responsive, user-friendly web applications using HTML, Tailwind CSS, and JavaScript.
+            When I’m not coding, I’m exploring new frameworks, experimenting with UI/UX design, or tinkering with AI tools.
           </p>
           <p>
-            My goal is to continuously learn and deliver clean, scalable code that
-            solves real-world problems.
+            My primary focus is writing <span class="font-semibold">clean, scalable code</span> that solves real-world problems. I love collaborating, learning, and continuously improving every line of code I write.
           </p>
         </div>
-        <div class="about-pghoto">
-          <img src="images/image.png" alt="About Photo" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS ========== -->
+  <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-semibold text-center mb-8 text-primary dark:text-gray-100">Skills</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Skill Card 1 -->
+        <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow hover:shadow-lg transition">
+          <div class="text-accent text-4xl mb-4"><i class="fab fa-html5"></i></div>
+          <h3 class="font-semibold text-xl mb-2 dark:text-gray-100">HTML5</h3>
+          <p class="text-gray-600 dark:text-gray-300">Semantic markup, accessibility, SEO-friendly structure</p>
+        </div>
+        <!-- Skill Card 2 -->
+        <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow hover:shadow-lg transition">
+          <div class="text-accent text-4xl mb-4"><i class="fab fa-css3-alt"></i></div>
+          <h3 class="font-semibold text-xl mb-2 dark:text-gray-100">Tailwind CSS</h3>
+          <p class="text-gray-600 dark:text-gray-300">Utility-first design, responsive layouts, dark mode</p>
+        </div>
+        <!-- Skill Card 3 -->
+        <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow hover:shadow-lg transition">
+          <div class="text-accent text-4xl mb-4"><i class="fab fa-js-square"></i></div>
+          <h3 class="font-semibold text-xl mb-2 dark:text-gray-100">JavaScript</h3>
+          <p class="text-gray-600 dark:text-gray-300">ES6+, DOM manipulation, fetch API, async/await</p>
+        </div>
+        <!-- Skill Card 4 -->
+        <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow hover:shadow-lg transition">
+          <div class="text-accent text-4xl mb-4"><i class="fab fa-python"></i></div>
+          <h3 class="font-semibold text-xl mb-2 dark:text-gray-100">Python</h3>
+          <p class="text-gray-600 dark:text-gray-300">OOP, scripting, data processing, Flask/Django basics</p>
+        </div>
+        <!-- Skill Card 5 -->
+        <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow hover:shadow-lg transition">
+          <div class="text-accent text-4xl mb-4"><i class="fas fa-database"></i></div>
+          <h3 class="font-semibold text-xl mb-2 dark:text-gray-100">Databases</h3>
+          <p class="text-gray-600 dark:text-gray-300">MySQL, SQLite, basic CRUD, schema design</p>
+        </div>
+        <!-- Skill Card 6 -->
+        <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow hover:shadow-lg transition">
+          <div class="text-accent text-4xl mb-4"><i class="fas fa-chart-line"></i></div>
+          <h3 class="font-semibold text-xl mb-2 dark:text-gray-100">Data Analysis</h3>
+          <p class="text-gray-600 dark:text-gray-300">Pandas, NumPy, Tableau basics, Excel formulas</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ======== SKILLS ======== -->
-  <section id="skills" class="skills">
-    <div class="container section-container">
-      <h2 class="section-title">Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <i class="fab fa-html5 fa-3x"></i>
-          <h3>HTML5</h3>
-          <p>Semantic markup, accessibility, SEO-friendly structure</p>
-        </div>
-        <div class="skill-card">
-          <i class="fab fa-css3-alt fa-3x"></i>
-          <h3>CSS3</h3>
-          <p>Flexbox, Grid, animations, responsive design</p>
-        </div>
-        <div class="skill-card">
-          <i class="fab fa-js-square fa-3x"></i>
-          <h3>JavaScript</h3>
-          <p>ES6+, DOM manipulation, fetch API, async/await</p>
-        </div>
-        <div class="skill-card">
-          <i class="fab fa-react fa-3x"></i>
-          <h3>React</h3>
-          <p>Component-driven architecture, hooks, state management</p>
-        </div>
-        <div class="skill-card">
-          <i class="fas fa-database fa-3x"></i>
-          <h3>Databases</h3>
-          <p>SQL basics, NoSQL fundamentals, CRUD operations</p>
-        </div>
-        <div class="skill-card">
-          <i class="fas fa-git-alt fa-3x"></i>
-          <h3>Version Control</h3>
-          <p>Git, branching strategies, GitHub workflows</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======== PROJECTS ======== -->
-  <section id="projects" class="projects">
-    <div class="container section-container">
-      <h2 class="section-title">Projects</h2>
-      <div class="projects-grid">
-        <!-- Project Tile 1 -->
-        <div class="project-card">
-          <img
-            src="https://via.placeholder.com/400x250"
-            alt="Project Screenshot"
-          />
-          <div class="overlay">
-            <h3>QR Attendance System</h3>
-            <p>
-              A React + Firebase app that uses QR codes for check-in/check-out,
-              real-time dashboard, and admin panel.
-            </p>
-            <div class="project-links">
-              <a href="#" target="_blank" title="Live Demo"
-                ><i class="fas fa-external-link-alt"></i
-              ></a>
-              <a href="#" target="_blank" title="Source Code"
-                ><i class="fab fa-github"></i
-              ></a>
+  <!-- ========== PROJECTS ========== -->
+  <section id="projects" class="py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-semibold text-center mb-8 text-primary dark:text-gray-100">Projects</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project Card Example -->
+        <div class="relative group overflow-hidden rounded-lg shadow-lg">
+          <div class="h-48 bg-gradient-to-br from-gray-200 to-gray-300 group-hover:from-gray-300 group-hover:to-gray-400 transition">
+            <!-- If you want a CSS pattern or gradient as “thumbnail,” replace this div’s background -->
+          </div>
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition"></div>
+          <div class="absolute bottom-0 p-4 text-white opacity-0 group-hover:opacity-100 transition">
+            <h3 class="font-semibold text-xl mb-1">QR Attendance System</h3>
+            <p class="text-sm">React + Firebase’s real-time check-in/out dashboard. (No images—pure CSS/gradient card.)</p>
+            <div class="mt-2 space-x-3">
+              <a href="#" target="_blank" class="inline-block bg-accent px-3 py-1 rounded-full text-sm hover:bg-red-600 transition">
+                Live Demo
+              </a>
+              <a href="#" target="_blank" class="inline-block bg-gray-800 px-3 py-1 rounded-full text-sm hover:bg-gray-700 transition">
+                Source Code
+              </a>
             </div>
           </div>
         </div>
-
-        <!-- Project Tile 2 -->
-        <div class="project-card">
-          <img
-            src="https://via.placeholder.com/400x250"
-            alt="Project Screenshot"
-          />
-          <div class="overlay">
-            <h3>Portfolio Website</h3>
-            <p>
-              This very template! Built with HTML, CSS, and JavaScript (no
-              frameworks) and deployed on GitHub Pages.
-            </p>
-            <div class="project-links">
-              <a href="#" target="_blank" title="Live Demo"
-                ><i class="fas fa-external-link-alt"></i
-              ></a>
-              <a href="#" target="_blank" title="Source Code"
-                ><i class="fab fa-github"></i
-              ></a>
+        <!-- Duplicate and modify for each project -->
+        <div class="relative group overflow-hidden rounded-lg shadow-lg">
+          <div class="h-48 bg-gradient-to-tr from-red-100 to-red-200 group-hover:from-red-200 group-hover:to-red-300 transition"></div>
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition"></div>
+          <div class="absolute bottom-0 p-4 text-white opacity-0 group-hover:opacity-100 transition">
+            <h3 class="font-semibold text-xl mb-1">Environmental Monitoring</h3>
+            <p class="text-sm">PHP + MySQL system with real-time charts and admin alerts. (Styled with Tailwind gradients.)</p>
+            <div class="mt-2 space-x-3">
+              <a href="#" target="_blank" class="inline-block bg-accent px-3 py-1 rounded-full text-sm hover:bg-red-600 transition">
+                Live Demo
+              </a>
+              <a href="#" target="_blank" class="inline-block bg-gray-800 px-3 py-1 rounded-full text-sm hover:bg-gray-700 transition">
+                Source Code
+              </a>
             </div>
           </div>
         </div>
-
-        <!-- Project Tile 3 -->
-        <div class="project-card">
-          <img
-            src="https://via.placeholder.com/400x250"
-            alt="Project Screenshot"
-          />
-          <div class="overlay">
-            <h3>Environmental Monitoring</h3>
-            <p>
-              PHP + MySQL system with real-time charts, email alerts, and admin
-              dashboard. Live data from third-party APIs.
-            </p>
-            <div class="project-links">
-              <a href="#" target="_blank" title="Live Demo"
-                ><i class="fas fa-external-link-alt"></i
-              ></a>
-              <a href="#" target="_blank" title="Source Code"
-                ><i class="fab fa-github"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project Tile 4 -->
-        <div class="project-card">
-          <img
-            src="https://via.placeholder.com/400x250"
-            alt="Project Screenshot"
-          />
-          <div class="overlay">
-            <h3>Data Analytics Dashboard</h3>
-            <p>
-              Tableau + JavaScript interactive dashboard analyzing sales data
-              with filters and drill-down charts.
-            </p>
-            <div class="project-links">
-              <a href="#" target="_blank" title="Live Demo"
-                ><i class="fas fa-external-link-alt"></i
-              ></a>
-              <a href="#" target="_blank" title="Source Code"
-                ><i class="fab fa-github"></i
-              ></a>
+        <div class="relative group overflow-hidden rounded-lg shadow-lg">
+          <div class="h-48 bg-gradient-to-br from-yellow-100 to-yellow-200 group-hover:from-yellow-200 group-hover:to-yellow-300 transition"></div>
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition"></div>
+          <div class="absolute bottom-0 p-4 text-white opacity-0 group-hover:opacity-100 transition">
+            <h3 class="font-semibold text-xl mb-1">Data Analytics Dashboard</h3>
+            <p class="text-sm">Tableau & JS interactive dashboards styled with Tailwind utilities.</p>
+            <div class="mt-2 space-x-3">
+              <a href="#" target="_blank" class="inline-block bg-accent px-3 py-1 rounded-full text-sm hover:bg-red-600 transition">
+                Live Demo
+              </a>
+              <a href="#" target="_blank" class="inline-block bg-gray-800 px-3 py-1 rounded-full text-sm hover:bg-gray-700 transition">
+                Source Code
+              </a>
             </div>
           </div>
         </div>
@@ -216,69 +245,119 @@
     </div>
   </section>
 
-  <!-- ======== CONTACT ======== -->
-  <section id="contact" class="contact">
-    <div class="container section-container">
-      <h2 class="section-title">Get In Touch</h2>
-      <form
-        action="mailto:your.email@example.com"
-        method="POST"
-        enctype="text/plain"
-        class="contact-form"
-      >
-        <div class="form-group">
-          <label for="name">Name</label>
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-md mx-auto px-4">
+      <h2 class="text-3xl font-semibold text-center mb-8 text-primary dark:text-gray-100">Contact Me</h2>
+      <form class="space-y-4">
+        <div>
+          <label for="name" class="block text-gray-700 dark:text-gray-300 mb-1">Name</label>
           <input
             type="text"
             id="name"
-            name="Name"
+            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-accent"
             placeholder="Your Name"
             required
           />
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
+        <div>
+          <label for="email" class="block text-gray-700 dark:text-gray-300 mb-1">Email</label>
           <input
             type="email"
             id="email"
-            name="Email"
+            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-accent"
             placeholder="your.email@example.com"
             required
           />
         </div>
-        <div class="form-group">
-          <label for="message">Message</label>
+        <div>
+          <label for="message" class="block text-gray-700 dark:text-gray-300 mb-1">Message</label>
           <textarea
             id="message"
-            name="Message"
             rows="5"
+            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-accent"
             placeholder="How can I help you?"
             required
           ></textarea>
         </div>
-        <button type="submit" class="btn">Send Message</button>
+        <button
+          type="submit"
+          class="w-full bg-accent text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-600 transition"
+        >
+          Send Message
+        </button>
       </form>
     </div>
   </section>
 
-  <!-- ======== FOOTER ======== -->
-  <footer class="footer">
-    <div class="container footer-container">
-      <p>© 2025 Your Name. All rights reserved.</p>
-      <div class="social-links">
-        <a href="#" target="_blank" title="GitHub"
-          ><i class="fab fa-github"></i
-        ></a>
-        <a href="#" target="_blank" title="LinkedIn"
-          ><i class="fab fa-linkedin"></i
-        ></a>
-        <a href="#" target="_blank" title="Twitter"
-          ><i class="fab fa-twitter"></i
-        ></a>
+  <!-- ========== FOOTER ========== -->
+  <footer class="py-6 bg-white dark:bg-gray-900">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+      <p class="text-gray-600 dark:text-gray-400 text-sm">&copy; 2025 Your Name. All Rights Reserved.</p>
+      <div class="flex space-x-4">
+        <a href="#" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-accent transition"><i class="fab fa-github fa-lg"></i></a>
+        <a href="#" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-accent transition"><i class="fab fa-linkedin fa-lg"></i></a>
+        <a href="#" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-accent transition"><i class="fab fa-twitter fa-lg"></i></a>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navClose  = document.getElementById('nav-close');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    navToggle.addEventListener('click', () => {
+      mobileNav.classList.remove('nav-closed');
+      mobileNav.classList.add('nav-open');
+    });
+    navClose.addEventListener('click', () => {
+      mobileNav.classList.remove('nav-open');
+      mobileNav.classList.add('nav-closed');
+    });
+
+    // Dark/Light mode toggle (desktop)
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon   = document.getElementById('theme-icon');
+
+    // Dark/Light mode toggle (mobile)
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const themeIconMobile   = document.getElementById('theme-icon-mobile');
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      if (theme === 'dark') {
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+        themeIconMobile.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        themeIcon.classList.replace('fa-sun', 'fa-moon');
+        themeIconMobile.classList.replace('fa-sun', 'fa-moon');
+      }
+      localStorage.setItem('theme', theme);
+    }
+
+    // On page load, read from localStorage or system preference
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setTheme('dark');
+      } else {
+        setTheme('light');
+      }
+    });
+
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+    themeToggleMobile.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  </script>
 </body>
 </html>
